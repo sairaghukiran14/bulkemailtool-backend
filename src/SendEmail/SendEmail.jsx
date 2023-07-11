@@ -54,7 +54,7 @@ const SendEmail = () => {
   const sendmail_submithandler = (e) => {
     e.preventDefault();
 
-    axios.post(`${process.env.API}/sendmail`, sendmail_details).then((res) => {
+    axios.post(`${process.env.API}sendmail`, sendmail_details).then((res) => {
       alert(res.data);
     });
   };
@@ -62,14 +62,14 @@ const SendEmail = () => {
     e.preventDefault();
 
     axios
-      .post(`${process.env.API}/schedulemail`, schedulemail_details)
+      .post(`${process.env.API}schedulemail`, schedulemail_details)
       .then((res) => {
         alert(res.data);
       });
   };
   useEffect(() => {
     axios
-      .get(`${process.env.API}/myprofile`, {
+      .get(`${process.env.API}myprofile`, {
         headers: {
           token: localStorage.getItem("token"),
         },

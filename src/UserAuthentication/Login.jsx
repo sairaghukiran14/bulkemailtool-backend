@@ -23,7 +23,7 @@ const Login = () => {
   };
   const loginHandler = (e) => {
     e.preventDefault();
-    axios.post(`${process.env.API}/login`, user).then((res) => {
+    axios.post(`${process.env.API}login`, user).then((res) => {
       localStorage.setItem("token", res.data.token);
       setAuth(true);
     });

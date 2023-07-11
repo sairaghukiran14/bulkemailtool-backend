@@ -23,7 +23,7 @@ const Registration = () => {
   const { fullname, email_address, password, confirm_password } = newuser;
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post(`${process.env.API}/registration`, newuser).then((res) => {
+    axios.post(`${process.env.API}registration`, newuser).then((res) => {
       alert(res.data);
       setNewuser({
         fullname: "",
