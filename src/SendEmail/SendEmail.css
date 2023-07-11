@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+:root {
+  --black: #000000;
+  --purple: #4e4feb;
+  --blue: #068fff;
+  --grey: #fbfbfb;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+textarea,
+input {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: 1px solid var(--black);
+  border-radius: 4px;
+  padding: 4px;
+}
+.btnn {
+  background-color: green;
+  color: var(--grey);
+  border-radius: 4px;
+  padding: 8px;
+}
+.btnnn {
+  color: var(--grey);
+  border-radius: 4px;
+  padding: 8px;
+}
+.sendmail-form {
+  margin-top: 20px;
+}
+.send_header,
+.schedule_header {
+  margin-bottom: 20px;
+}

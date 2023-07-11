@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+:root {
+  --black: #000000;
+  --purple: #4e4feb;
+  --blue: #068fff;
+  --grey: #fbfbfb;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.Homepage-section {
+}
+.navbar {
+  padding: 2px;
+  background-color: var(--purple);
+  /* border: 1px solid var(--grey); */
+}
+.logoname {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--grey);
+  padding-left: 10px;
+}
+.iconlogo {
+  color: var(--grey);
+  transform: rotate(90deg);
+  font-size: 24px;
+}
+.right-nav-section {
+  font-size: 17px;
+  font-weight: 500;
+}
+.right-nav-section div {
+  background: var(--grey);
+  color: var(--purple);
+  border-radius: 4px;
+  padding: 2px 8px;
+  gap: 2px;
+  margin-right: 4px;
+}
+.description {
+  font-size: 14px;
+}
+.content-section {
+  /* background: url(./img/purplediamond.jpeg); */
+  background-size: cover;
+  backdrop-filter: blur(7px);
+}
