@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 import { useState } from "react";
 import React from "react";
 import axios from "axios";
@@ -21,7 +23,7 @@ const Login = () => {
   };
   const loginHandler = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5432/login", user).then((res) => {
+    axios.post(`${process.env.API}/login`, user).then((res) => {
       localStorage.setItem("token", res.data.token);
       setAuth(true);
     });

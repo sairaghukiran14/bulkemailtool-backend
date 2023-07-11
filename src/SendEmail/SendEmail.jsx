@@ -1,3 +1,4 @@
+require("dotenv").config();
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HiPaperAirplane } from "react-icons/hi";
@@ -53,24 +54,22 @@ const SendEmail = () => {
   const sendmail_submithandler = (e) => {
     e.preventDefault();
 
-    axios
-      .post("http://localhost:5432/sendmail", sendmail_details)
-      .then((res) => {
-        alert(res.data);
-      });
+    axios.post(`${process.env.API}/sendmail`, sendmail_details).then((res) => {
+      alert(res.data);
+    });
   };
   const schedulemail_submithanndler = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5432/schedulemail", schedulemail_details)
+      .post(`${process.env.API}/schedulemail`, schedulemail_details)
       .then((res) => {
         alert(res.data);
       });
   };
   useEffect(() => {
     axios
-      .get("http://localhost:5432/myprofile", {
+      .get(`${process.env.API}/myprofile`, {
         headers: {
           token: localStorage.getItem("token"),
         },

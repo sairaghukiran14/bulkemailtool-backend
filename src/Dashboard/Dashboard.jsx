@@ -1,3 +1,4 @@
+require("dotenv").config();
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Homepage/Homepage.css";
@@ -13,7 +14,7 @@ const Dashboard = () => {
   const [emails, setemails] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5432/displayemails", {
+      .get(`${process.env.API}/displayemails`, {
         headers: {
           token: localStorage.getItem("token"),
         },

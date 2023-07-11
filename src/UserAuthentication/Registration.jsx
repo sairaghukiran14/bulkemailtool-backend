@@ -1,3 +1,4 @@
+require("dotenv").config();
 import React, { useState } from "react";
 import axios from "axios";
 import "./Registration.css";
@@ -22,7 +23,7 @@ const Registration = () => {
   const { fullname, email_address, password, confirm_password } = newuser;
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5432/registration", newuser).then((res) => {
+    axios.post(`${process.env.API}/registration`, newuser).then((res) => {
       alert(res.data);
       setNewuser({
         fullname: "",
