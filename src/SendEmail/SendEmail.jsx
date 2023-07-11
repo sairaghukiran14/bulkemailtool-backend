@@ -54,22 +54,30 @@ const SendEmail = () => {
   const sendmail_submithandler = (e) => {
     e.preventDefault();
 
-    axios.post(`${process.env.API}sendmail`, sendmail_details).then((res) => {
-      alert(res.data);
-    });
+    axios
+      .post(
+        `https://bulkemailtool-backend-1d7l.onrender.com/sendmail`,
+        sendmail_details
+      )
+      .then((res) => {
+        alert(res.data);
+      });
   };
   const schedulemail_submithanndler = (e) => {
     e.preventDefault();
 
     axios
-      .post(`${process.env.API}schedulemail`, schedulemail_details)
+      .post(
+        `https://bulkemailtool-backend-1d7l.onrender.com/schedulemail`,
+        schedulemail_details
+      )
       .then((res) => {
         alert(res.data);
       });
   };
   useEffect(() => {
     axios
-      .get(`${process.env.API}myprofile`, {
+      .get(`https://bulkemailtool-backend-1d7l.onrender.com/myprofile`, {
         headers: {
           token: localStorage.getItem("token"),
         },
