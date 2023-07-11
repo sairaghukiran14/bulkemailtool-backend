@@ -1,4 +1,3 @@
-
 import React from "react";
 import Homepage from "./Homepage/Homepage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -6,6 +5,7 @@ import Registration from "./UserAuthentication/Registration";
 import Login from "./UserAuthentication/Login";
 import Dashboard from "./Dashboard/Dashboard";
 import SendEmail from "./SendEmail/SendEmail";
+import ScheduleEmail from "./SendEmail/ScheduleEmail";
 
 const App = () => {
   return (
@@ -17,6 +17,7 @@ const App = () => {
           <Route path="/registration" Component={Registration} />
           <Route path="/dashboard" Component={Dashboard} />
           <Route path="/sendmail" Component={SendEmail} />
+          <Route path="/schedulemail" Component={ScheduleEmail} />
         </Routes>
       </BrowserRouter>
     </div>

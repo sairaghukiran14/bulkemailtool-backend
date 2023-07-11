@@ -16,7 +16,7 @@ const SendEmail = () => {
     email_title: "",
     email_subject: "",
     email_content: "",
-    created_ByUser: present_user.email_address,
+    created_ByUser: "",
     email_list: "",
   });
   const sendmail_onchangehandler = (e) => {
@@ -25,40 +25,43 @@ const SendEmail = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
+  const [schedulemail_details, setSchedule_details] = useState({
+    email_title: "",
+    email_subject: "",
+    email_content: "",
+    created_ByUser: present_user.email_address,
+    email_list: "",
+    Date_Timestamp: "",
+  });
   const {
     email_title,
     email_subject,
-    email_content,
+    email_body,
     created_ByUser,
     email_list,
-  } = sendmail_details;
+    Date_Timestamp,
+  } = schedulemail_details;
 
-  const sendmail_submithandler = (e) => {
+  const schedulemail_onchangehandler = (e) => {
+    setSchedule_details((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const schedulemail_submithanndler = (e) => {
     e.preventDefault();
 
     axios
       .post(
-        `https://bulkemailtool-backend-1d7l.onrender.com/sendmail`,
-        sendmail_details,
-        {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        }
+        `https://bulkemailtool-backend-1d7l.onrender.com/schedulemail`,
+        schedulemail_details
       )
       .then((res) => {
-        // localStorage.setItem("token", res.data.token);
         alert(res.data);
-        setSendmail_details({
-          email_title: "",
-          email_subject: "",
-          email_content: "",
-          created_ByUser: present_user.email_address,
-          email_list: "",
-        });
       });
   };
-  console.log(localStorage.getItem("token"));
   useEffect(() => {
     axios
       .get(`https://bulkemailtool-backend-1d7l.onrender.com/myprofile`, {
@@ -68,7 +71,7 @@ const SendEmail = () => {
       })
       .then((res) => setPresentUser(res.data));
   }, []);
-  console.log();
+
   if (!localStorage.getItem("token")) {
     return <Navigate to="/login" />;
   }
@@ -83,13 +86,12 @@ const SendEmail = () => {
             </div>
           </div>
           <div className="right-nav-section flex items-center">
-            <div className="flex items-center">
+            <div className="signup flex items-center">
               <Link to="/dashboard">Dashboard</Link>
             </div>
             <div className=" flex items-center">
-              <Link to="/SchedulEmail">Schedule Email</Link>
+              <Link to="/sendmail">Send Email</Link>
             </div>
-
             <div className="login flex items-center" onClick={logouthandler}>
               <Link to="/login">LogOut</Link>
               <BiLogOut className="" />
@@ -97,45 +99,51 @@ const SendEmail = () => {
           </div>
         </div>
       </div>
-      <div className="sendmail-form flex items-center justify-evenly">
-        <div className="sendmail_form w-96">
-          <div className="send_header text-xl font-bold text-center">
-            Send Mail
+      <div className="schedule-content flex justify-center items-center mt-4">
+        <div className="schedulemail_form w-96">
+          <div className="schedule_header text-xl font-bold text-center">
+            Schedule mail
           </div>
           <form
             action=""
             className="flex flex-col"
-            onSubmit={sendmail_submithandler}
+            onSubmit={schedulemail_submithanndler}
           >
             <input
               type="text"
               placeholder="Email Title"
               name="email_title"
               value={email_title}
-              onChange={sendmail_onchangehandler}
+              onChange={schedulemail_onchangehandler}
             />
             <input
               type="text"
               placeholder="Email Subject"
               name="email_subject"
               value={email_subject}
-              onChange={sendmail_onchangehandler}
+              onChange={schedulemail_onchangehandler}
             />
             <textarea
               type="text"
               placeholder="Email Body"
-              name="email_content"
-              value={email_content}
-              onChange={sendmail_onchangehandler}
+              name="email_body"
+              value={email_body}
+              onChange={schedulemail_onchangehandler}
             />
             <textarea
               type="text"
               placeholder="Enter the recepient details seperated by commas(,)"
               name="email_list"
               value={email_list}
-              onChange={sendmail_onchangehandler}
+              onChange={schedulemail_onchangehandler}
             />
-            <button className="btnn bg-green-500">Send </button>
+            <input
+              type="datetime-local"
+              name="Date_Timestamp"
+              value={Date_Timestamp}
+              onChange={schedulemail_onchangehandler}
+            />
+            <button className="btnnn bg-blue-500">Schedule </button>
           </form>
         </div>
       </div>
