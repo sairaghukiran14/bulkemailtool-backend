@@ -1,3 +1,4 @@
+require("dotenv").config();
 import React from "react";
 import Homepage from "./Homepage/Homepage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

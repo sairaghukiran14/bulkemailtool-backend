@@ -1,4 +1,4 @@
-require("dotenv").config();
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Homepage/Homepage.css";

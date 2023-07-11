@@ -1,4 +1,4 @@
-require("dotenv").config();
+
 
 import { useState } from "react";
 import React from "react";
