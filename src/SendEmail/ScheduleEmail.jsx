@@ -12,35 +12,22 @@ const SendEmail = () => {
   const logouthandler = (e) => {
     localStorage.removeItem(`token`);
   };
-  const [sendmail_details, setSendmail_details] = useState({
-    email_title: "",
-    email_subject: "",
-    email_content: "",
-    created_ByUser: "",
-    email_list: "",
-  });
-  const sendmail_onchangehandler = (e) => {
-    setSendmail_details((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
-  };
 
   const [schedulemail_details, setSchedule_details] = useState({
     email_title: "",
     email_subject: "",
     email_content: "",
-    created_ByUser: present_user.email_address,
+    created_At: "",
     email_list: "",
-    Date_Timestamp: "",
+    Send_Timestamp: "",
   });
   const {
     email_title,
     email_subject,
-    email_body,
-    created_ByUser,
+    email_content,
+    created_At,
     email_list,
-    Date_Timestamp,
+    Send_Timestamp,
   } = schedulemail_details;
 
   const schedulemail_onchangehandler = (e) => {
@@ -126,8 +113,8 @@ const SendEmail = () => {
             <textarea
               type="text"
               placeholder="Email Body"
-              name="email_body"
-              value={email_body}
+              name="email_content"
+              value={email_content}
               onChange={schedulemail_onchangehandler}
             />
             <textarea
@@ -139,8 +126,8 @@ const SendEmail = () => {
             />
             <input
               type="datetime-local"
-              name="Date_Timestamp"
-              value={Date_Timestamp}
+              name="Send_Timestamp"
+              value={Send_Timestamp}
               onChange={schedulemail_onchangehandler}
             />
             <button className="btnnn bg-blue-500">Schedule </button>
