@@ -23,15 +23,20 @@ const Registration = () => {
   const { fullname, email_address, password, confirm_password } = newuser;
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post(`${process.env.API}registration`, newuser).then((res) => {
-      alert(res.data);
-      setNewuser({
-        fullname: "",
-        email_address: "",
-        password: "",
-        confirm_password: "",
+    axios
+      .post(
+        `https://bulkemailtool-backend-1d7l.onrender.com/registration`,
+        newuser
+      )
+      .then((res) => {
+        alert(res.data);
+        setNewuser({
+          fullname: "",
+          email_address: "",
+          password: "",
+          confirm_password: "",
+        });
       });
-    });
   };
   // console.log(newuser);
   return (

@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [emails, setemails] = useState([]);
   useEffect(() => {
     axios
-      .get(`${process.env.API}displayemails`, {
+      .get(`https://bulkemailtool-backend-1d7l.onrender.com/displayemails`, {
         headers: {
           token: localStorage.getItem("token"),
         },

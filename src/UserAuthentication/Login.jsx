@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import React from "react";
 import axios from "axios";
@@ -23,10 +21,12 @@ const Login = () => {
   };
   const loginHandler = (e) => {
     e.preventDefault();
-    axios.post(`${process.env.API}login`, user).then((res) => {
-      localStorage.setItem("token", res.data.token);
-      setAuth(true);
-    });
+    axios
+      .post(`https://bulkemailtool-backend-1d7l.onrender.com/login`, user)
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        setAuth(true);
+      });
   };
   if (auth) {
     return <Navigate to="/dashboard" />;
