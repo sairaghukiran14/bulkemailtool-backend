@@ -25,13 +25,23 @@ const SendEmail = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  const {
+  useEffect(() => {
+    axios
+      .get(`https://bulkemailtool-backend-1d7l.onrender.com/myprofile`, {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => setPresentUser(res.data));
+  }, []);
+  let {
     email_title,
     email_subject,
     email_content,
     created_ByUser,
     email_list,
   } = sendmail_details;
+  created_ByUser = present_user.fullname;
 
   const sendmail_submithandler = (e) => {
     e.preventDefault();
@@ -53,22 +63,12 @@ const SendEmail = () => {
           email_title: "",
           email_subject: "",
           email_content: "",
-          created_ByUser: present_user.email_address,
+          created_ByUser: "",
           email_list: "",
         });
       });
   };
-  console.log(localStorage.getItem("token"));
-  useEffect(() => {
-    axios
-      .get(`https://bulkemailtool-backend-1d7l.onrender.com/myprofile`, {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => setPresentUser(res.data));
-  }, []);
-  console.log();
+
   if (!localStorage.getItem("token")) {
     return <Navigate to="/login" />;
   }

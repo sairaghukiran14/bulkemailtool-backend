@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Homepage/Homepage.css";
@@ -21,7 +20,7 @@ const Dashboard = () => {
       })
       .then((res) => setemails(res.data));
   }, []);
-  console.log(emails);
+
   return (
     <div className="dashboard-seciton">
       <div className="navbar-section">
@@ -53,7 +52,7 @@ const Dashboard = () => {
         </div>
         <div className="sent_email_list">
           {emails.map((email) => (
-            <div className="individual_sent_email_list flex flex-col">
+            <div className="individual_sent_email_list flex flex-col mb-2 w-full">
               <div className="email_title text-center text-xl">
                 <b>{email.email_title}</b>
               </div>
@@ -65,7 +64,7 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="createdBy text-sm text-center font-bold ">
-                CreatedBy : A S Raghu Kiran
+                CreatedAt : {email.created_At}
               </div>
             </div>
           ))}
